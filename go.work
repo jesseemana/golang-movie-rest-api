@@ -1,0 +1,9 @@
+go 1.18
+
+use (
+	./main
+	./pointers
+	./random
+	./ds
+	./algo
+)
