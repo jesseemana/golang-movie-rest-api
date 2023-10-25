@@ -10,7 +10,7 @@ import (
 
 func main() {
 	fmt.Println("handling web stuff in Go")
-
+	urls()
 	makeGetRequest()
 }
 
@@ -21,7 +21,7 @@ func makeGetRequest() {
 	checkNilErr(err)
 
 	defer response.Body.Close()
-	
+
 	fmt.Println("Status code:", response.StatusCode)
 	fmt.Println("Content lenght:", response.ContentLength)
 
@@ -39,10 +39,11 @@ func makeGetRequest() {
 }
 
 func urls() {
-	var myurl string = "https://lco.dev:3000/learn?coursename=node&payment=gl09asd0123"
+	var myurl string = "https://lco.dev:3000/learn?coursename=node_masterclass&payment=gl09asd0123"
 
 	result, err := url.Parse(myurl)
 	checkNilErr(err)
+
 	fmt.Println(result.Scheme)
 	fmt.Println(result.Host)
 	fmt.Println(result.RawQuery)
@@ -52,6 +53,7 @@ func urls() {
 	params := result.Query()
 	fmt.Println(params["coursename"])
 
+	// Constructing a new url 
 	urlparts := &url.URL{
 		Scheme:  "https",
 		Host:    "lco.dev",

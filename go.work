@@ -6,4 +6,6 @@ use (
 	./random
 	./ds
 	./algo
+	./files
+	./web
 )

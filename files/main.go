@@ -20,11 +20,12 @@ func writeFile() {
 	file, err := os.Create("./newfile.txt")
 	checkNilErr(err)
 
+	defer file.Close()
+	
 	length, err := io.WriteString(file, content)
 	checkNilErr(err)
 
 	fmt.Println("The length of the file is", length)	
-	defer file.Close()
 }
 
 func readFile(filename string) {

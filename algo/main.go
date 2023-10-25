@@ -11,12 +11,12 @@ func main() {
 	fmt.Println(s)
 }
 
-func algo(value int) int {
-	if value == 0 {
+func algo(n int) int {
+	if n == 0 {
 		return 2
-	} else if value == 1 {
+	} else if n == 1 {
 		return 1
 	} else {
-		return algo(value-1) + algo(value-2)
+		return algo(n-1) + algo(n-2)
 	}
 }	

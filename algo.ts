@@ -4,13 +4,13 @@ for (let i = 1; i < 6; i++) {
   s += algo(i)
 }
 
-function algo(value: number): number {
-  if (value === 0) {
+function algo(n: number): number {
+  if (n === 0) {
     return 2
-  } else if (value === 1) {
+  } else if (n === 1) {
     return 1
   } else {
-    return algo(value - 1) + algo(value - 2)
+    return algo(n-1) + algo(n-2)
   }
 }
 
