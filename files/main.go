@@ -5,6 +5,7 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -29,10 +30,15 @@ func writeFile() {
 }
 
 func readFile(filename string) {
+	var response_string strings.Builder
+
 	data, err := ioutil.ReadFile(filename)
 	checkNilErr(err)
-	
-	fmt.Println("Data inside the file \n", string(data))
+
+	count, _ := response_string.Write(data)
+	fmt.Println(count)
+
+	fmt.Println("Data inside the file \n", response_string.String())
 }	
 
 func checkNilErr(err error) {
