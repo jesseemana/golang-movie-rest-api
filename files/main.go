@@ -21,7 +21,7 @@ func writeFile() {
 	checkNilErr(err)
 
 	defer file.Close()
-	
+
 	length, err := io.WriteString(file, content)
 	checkNilErr(err)
 
@@ -31,7 +31,7 @@ func writeFile() {
 func readFile(filename string) {
 	data, err := ioutil.ReadFile(filename)
 	checkNilErr(err)
-
+	
 	fmt.Println("Data inside the file \n", string(data))
 }	
 
