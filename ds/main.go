@@ -16,6 +16,7 @@ func main() {
 		"jesseemana@gmail.com",
 		true,
 	}
+	
 	fmt.Printf("Users' details are: %+v\n", jesse)
 	jesse.getStatus()
 }
