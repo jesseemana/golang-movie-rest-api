@@ -23,7 +23,6 @@ func main() {
 func diceGame() {
 	rand.Seed(time.Now().UnixNano())
 	dice_number := rand.Intn(6) + 1
-	fmt.Println(dice_number)
 
 	switch dice_number {
 	case 1:
