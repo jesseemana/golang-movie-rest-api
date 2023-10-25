@@ -1,0 +1,1 @@
+We've created a second file with Go. Here we are closing with defer.

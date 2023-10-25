@@ -1,0 +1,1 @@
+Working with files in Golang, this is how to write to a file in Go
