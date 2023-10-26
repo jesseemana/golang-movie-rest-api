@@ -10,11 +10,13 @@ import (
 
 func main() {
 	fmt.Println("handling web stuff in Go")
-	urls()
-	makeGetRequest()
+	// urls()
+	// MakeGetRequest()
+	MakePostJSONRequest()
+	MakeFormDataRequest()
 }
 
-func makeGetRequest() {
+func MakeGetRequest() {
 	const url = "http://localhost/8080/recipes"
 
 	response, err := http.Get(url)
@@ -69,3 +71,45 @@ func checkNilErr(err error) {
 		panic(err)
 	}
 }
+
+func MakePostJSONRequest() {
+	myurl := "http://localhost:8080/post"
+
+	request_body := strings.NewReader(`
+		{
+			"first_name": "Peter",
+			"last_name": "Griffin",
+			"email": "bigpete@gmail.com",
+			"location": "Quahog, Rhode Island"
+		}
+	`)
+
+	response, err := http.Post(myurl, "application/json", request_body)
+	checkNilErr(err)
+
+	defer response.Body.Close()
+
+	data, _ := ioutil.ReadAll(response.Body)
+
+	fmt.Println(string(data))
+}
+
+
+func MakeFormDataRequest() {
+	myurl := "http://localhost:8080/post"
+
+	data := url.Values{}
+	data.Add("firstname", "Glen")
+	data.Add("lastname", "Quagmire")
+	data.Add("email", "giggityglen@gmail.com")
+	data.Add("location", "Quahog, Rhode Island")
+
+	response, err := http.PostForm(myurl, data)
+	checkNilErr(err)
+
+	defer response.Body.Close()
+
+	content, _ := ioutil.ReadAll(response.Body)
+
+	fmt.Println(string(content))
+}	
