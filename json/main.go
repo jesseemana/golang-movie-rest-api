@@ -27,10 +27,10 @@ func EncodeJson() {
 		{"Harry Pistoli", "@n890dk", "pistoriharry@gmail.com", "Intern Developer", nil},
 	}
 
-	finaljson, error := json.MarshalIndent(employees, "", "\t")
-	if error != nil {
-		panic(error)
-	}
+	finaljson, err := json.MarshalIndent(employees, "", "\t")
+	if err != nil {
+		panic(err)
+	}	
 
 	fmt.Printf("%s\n", finaljson)
 }
@@ -60,4 +60,3 @@ func DecodeJson() {
 	json.Unmarshal(json_data, &webdata)
 	fmt.Printf("%#v\n", webdata)
 }	
-      
