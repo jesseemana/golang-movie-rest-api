@@ -1,0 +1,12 @@
+{
+  "name": "expressapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.ts",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon server.ts"
+  },
+  "author": "",
+  "license": "ISC"
+}
