@@ -15,7 +15,8 @@ type employee struct {
 
 func main() {
 	fmt.Println("Working with JSON data")
-	EncodeJson()
+	// EncodeJson()
+	DecodeJson()
 }
 
 func EncodeJson() {
@@ -33,3 +34,30 @@ func EncodeJson() {
 
 	fmt.Printf("%s\n", finaljson)
 }
+
+func DecodeJson() {
+	json_data := []byte(`
+		{
+            "employee": "James Garner",
+            "email": "garnerjames@acme.dev",
+            "position": "Sr. Engineer",
+            "role": ["Admin","Staff","Editor"]
+        }
+	`)
+
+	var employee_data employee
+
+	if json.Valid(json_data) {
+		fmt.Println("Valid JSON received")
+		json.Unmarshal(json_data, &employee_data)
+		fmt.Printf("%#v\n", employee_data)
+	} else {
+		fmt.Println("JSON WAS NOT VALID!")
+	}
+
+	// STORE AS KEY/VALUE PAIRS 
+	var webdata map[string]interface{}
+	json.Unmarshal(json_data, &webdata)
+	fmt.Printf("%#v\n", webdata)
+}	
+      
