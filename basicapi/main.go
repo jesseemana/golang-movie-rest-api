@@ -12,7 +12,6 @@ import (
 
 // install gorilla mux	
 
-// Models setup
 type Course struct {
 	CourseId    string  `json:"course_id"`
 	CourseName  string  `json:"course_name"`

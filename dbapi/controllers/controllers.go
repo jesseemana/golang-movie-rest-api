@@ -5,7 +5,8 @@ import (
 	"net/http"
 
 	model "github.com/jesseemana/gomongoapi/models"
-	"github.com/jesseemana/gomongoapi/service"
+	"github.com/jesseemana/gomongoapi/services"
+	"github.com/gorilla/mux"
 )
 
 func GetAllMovies(w http.ResponseWriter, r *http.Response) {

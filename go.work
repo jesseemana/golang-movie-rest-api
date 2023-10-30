@@ -8,4 +8,8 @@ use (
 	./algo
 	./files
 	./web
+	./json
+	./basicapi
+	./movieapi
+	./moviesapi
 )

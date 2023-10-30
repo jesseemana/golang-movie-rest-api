@@ -1,3 +1,3 @@
-module github.com/jesseemana/gomongoapi
+module gihub.com/jesseemana/movieapi
 
 go 1.18

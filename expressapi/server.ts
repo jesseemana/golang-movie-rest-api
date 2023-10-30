@@ -1,5 +1,8 @@
 import express, { Request, Response } from 'express'
 
+// npm i express nodemon
+// npm i -D @types/express @types/nodemon
+
 const PORT = 8080
 
 const app = express()
@@ -8,7 +11,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.get('/ping', (req: Request, res: Response) => {
-  res.status(200).send("Pong")
+  res.status(200).send('pong')
 })
 
 app.get('/get', (req: Request, res: Response) => {

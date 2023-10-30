@@ -1,7 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"net/http"
+
+	connectdb "github.com/jesseemana/gomongoapi/connect"
+	"github.com/jesseemana/gomongoapi/router"
+)
+
+var PORT = 3030
 
 func main() {
-	fmt.Println("Database API")
+	connectdb.ConnectDB()
+
+	r := router.Router()
+
+	fmt.Println("Server starting...")
+	http.ListenAndServe(":3030", r)
+	fmt.Println("server listening on port:", 3030)
 }	

@@ -65,6 +65,7 @@ func slices() {
 	high_scores[2] = 194
 	high_scores[3] = 487
 
+	// Adding new scores into the high scores slice 
 	high_scores = append(high_scores, 3802, 982, 142)
 
 	sort.Ints(high_scores)
