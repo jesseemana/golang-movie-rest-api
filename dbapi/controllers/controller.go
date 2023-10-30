@@ -10,7 +10,7 @@ import (
 )
 
 var connectionString = "mongodb connection string goes here"
-var dbName = "netflix"
+var dbName = "muviez"
 var colName = "watchlist"
 
 var collection *mongo.Collection
@@ -32,17 +32,17 @@ func init() {
 }
 
 func insertMovie(movie model.Movies) {
-	movie, err := collection.InsertOne(context.Background(), movie)
+	inserted, err := collection.InsertOne(context.Background(), movie)
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Println("Inserted 1 movie in database with id:", movie.ID)
+	fmt.Println("Inserted 1 movie in database with id:", inserted.insertedID)
 }
 
 func updateMovie(movieId string) {
-	id, _:= primitive.ObjectIDFromHex(movieId)
+	id, _ := primitive.ObjectIDFromHex(movieId)
 	filter := bson.M{"_id": id}
 	update := bson.M{"$set": bson.M{"watched": true}}
 
@@ -55,8 +55,8 @@ func updateMovie(movieId string) {
 	fmt.Println("Modified count: ", result.ModifiedCount)
 }
 
-func deleteMovie(movieId string) {
-	id, _:= primitive.ObjectIDFromHex(movieId)
+func deleteOneMovie(movieId string) {
+	id, _ := primitive.ObjectIDFromHex(movieId)
 	filter := bson.M{"_id": id}
 
 	deleteCount, err := collection.DeleteOne(context.Background(), filter)
@@ -89,15 +89,13 @@ func getAllMovies() []primitive.M {
 
 	defer cursor.Close(context.Background())
 
-	var movies []primitive.M
+	var movies []primitive.M // check mongo package for primitive type
 
 	for cursor.Next(context.Background()) {
 		var movie bson.M
-		err := cursor.Decode(&movie)
-		if err != nil {
+		if err = cursor.Decode(&movie); err != nil {
 			log.Fatal(err)
 		}
-
 		movies = append(movies, movie)
 	}
 
